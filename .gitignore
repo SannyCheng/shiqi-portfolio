@@ -1,8 +1,14 @@
 node_modules/
 dist/
+.vite/
+.vercel/
 work/
 outputs/
 .DS_Store
 *.log
+*.local
 .env
 .env.*
+
+# Keep the browser-ready MP4; exclude the original local source recording.
+public/projects/videos/*.MOV
