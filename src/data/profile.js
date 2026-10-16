@@ -1,3 +1,5 @@
+const assetPath = (path) => `${import.meta.env.BASE_URL}${path}`
+
 export const profile = {
   name: 'Shiqi Cheng',
   preferredName: 'Sanny',
@@ -46,6 +48,6 @@ export const profile = {
     { group: 'Communication', items: ['Research synthesis', 'Stakeholder reporting', 'Business writing', 'Mandarin · Native', 'English · Fluent'] }
   ],
   images: {
-    hero: '/images/hero.jpg', portrait: '/images/portrait.jpg', kpmg: '/images/kpmg.png', conference: '/images/conference.jpg', presentation: '/images/presentation.png', graduation: '/images/graduation.jpg'
+    hero: assetPath('images/hero.jpg'), portrait: assetPath('images/portrait.jpg'), kpmg: assetPath('images/kpmg.png'), conference: assetPath('images/conference.jpg'), presentation: assetPath('images/presentation.png'), graduation: assetPath('images/graduation.jpg')
   }
 }

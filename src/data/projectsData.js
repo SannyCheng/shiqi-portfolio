@@ -3,6 +3,8 @@
 // Leave unavailable fields empty ('') or use an empty array ([]).
 // Local files should be placed under /public/projects/ and referenced from /projects/.
 
+const assetPath = (path) => `${import.meta.env.BASE_URL}${path}`
+
 export const projectsData = [
   {
     id: 'ai-subcontracting-desk',
@@ -40,11 +42,11 @@ export const projectsData = [
     outcomes: [],
     coverImage: '',
     screenshots: [
-      '/projects/images/market-strategy-analysis-page-01.png',
-      '/projects/images/market-strategy-analysis-page-02.png',
-      '/projects/images/market-strategy-analysis-page-03.png',
+      assetPath('projects/images/market-strategy-analysis-page-01.png'),
+      assetPath('projects/images/market-strategy-analysis-page-02.png'),
+      assetPath('projects/images/market-strategy-analysis-page-03.png'),
     ],
-    pdfPath: '/projects/pdfs/market-strategy-analysis-shiqi-cheng.pdf',
+    pdfPath: assetPath('projects/pdfs/market-strategy-analysis-shiqi-cheng.pdf'),
     videoPath: '',
     tableauUrl: '',
     githubUrl: '',
@@ -63,7 +65,7 @@ export const projectsData = [
     role: '',
     methods: ['Tableau', 'Business intelligence', 'Data visualisation'],
     outcomes: [],
-    coverImage: '/projects/images/procurement-dashboard-shiqi-cheng.png',
+    coverImage: assetPath('projects/images/procurement-dashboard-shiqi-cheng.png'),
     screenshots: [],
     pdfPath: '',
     videoPath: '',
@@ -88,7 +90,7 @@ export const projectsData = [
     coverImage: '',
     screenshots: [],
     pdfPath: '',
-    videoPath: '/projects/videos/small-talk-demo.mp4',
+    videoPath: assetPath('projects/videos/small-talk-demo.mp4'),
     videoPoster: '',
     tableauUrl: '',
     githubUrl: '',
@@ -129,9 +131,9 @@ export const projectsData = [
     role: '',
     methods: ['Healthcare research', 'Health economics'],
     outcomes: [],
-    coverImage: '/projects/images/drg-research-poster.png',
+    coverImage: assetPath('projects/images/drg-research-poster.png'),
     screenshots: [],
-    pdfPath: '/projects/pdfs/drg-research-poster.pdf',
+    pdfPath: assetPath('projects/pdfs/drg-research-poster.pdf'),
     videoPath: '',
     tableauUrl: '',
     githubUrl: '',
