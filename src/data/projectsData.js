@@ -9,24 +9,33 @@ export const projectsData = [
   {
     id: 'ai-subcontracting-desk',
     title: 'AI-Powered Subcontracting Desk',
-    category: 'AI · Operations · System Integration',
+    detailTitle: 'SweaterCo Dispatch Copilot',
+    category: 'AI · Operations · Decision Support',
     year: '2026',
-    status: 'In Progress',
+    status: 'Completed',
+    detailStatus: 'Completed · Live Application',
     shortDescription:
-      'A university group project exploring AI-assisted order processing, subcontractor allocation and end-to-end system integration.',
+      'An AI-assisted dispatch copilot that turns chat-based production requests and live workshop capacity into reviewable subcontracting recommendations.',
     detailedOverview:
-      'The system converts natural-language manufacturing requests into structured inputs and supports allocation decisions across subcontractor workshops based on operational constraints.',
+      'Built for urgent reorder allocation, the application classifies requests, links follow-up messages, checks eight workshops against capacity and operating rules, and prepares an auditable plan for dispatcher approval. Uncertainty and exceptions remain visible so that final decisions stay with the human dispatcher.',
     role:
-      'Frontend development and system integration across the LLM, allocation engine, simulation and evaluation modules.',
-    methods: ['Natural-language processing', 'Allocation logic', 'Simulation', 'System integration'],
-    outcomes: [],
+      'Contributed to frontend development and system integration across the AI-assisted request workflow, Python allocation logic, simulation and evaluation.',
+    methods: ['Natural-language request processing', 'Python allocation logic', 'Human-in-the-loop review', 'Simulation & evaluation'],
+    outcomes: [
+      'Late batches fell from 41 to 2 of 120 in the official simulator, with 3.2% higher workshop cost.',
+      'Across three fresh runs, 73–81 of 85 allocation cases were prepared before dispatcher review.',
+      'After adding a Python cancellation check, saved-answer replay held all 15 exceptions with no unsafe recommendations.',
+    ],
     coverImage: '',
     screenshots: [],
     pdfPath: '',
-    videoPath: '',
+    videoPath: assetPath('projects/videos/sweaterco-dispatch-copilot-demo.mp4'),
+    videoPoster: '',
     tableauUrl: '',
     githubUrl: '',
-    externalLinks: [],
+    externalLinks: [
+      { label: 'Launch Live App', href: 'https://ai-assisted-factory-dispatcher.vercel.app/' },
+    ],
   },
   {
     id: 'market-strategy-analysis',

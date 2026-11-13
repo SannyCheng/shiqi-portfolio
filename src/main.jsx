@@ -24,7 +24,7 @@ function ProjectActions({ project }) {
   const pdfLabel = project.id === 'drg-research' ? 'View Full Poster' : project.id === 'market-strategy-analysis' ? 'View Full Report' : 'View PDF'
   const links = [
     project.pdfPath && { label: pdfLabel, href: project.pdfPath },
-    project.videoPath && project.id !== 'small-talk-app' && { label: 'Watch Demo', href: project.videoPath },
+    project.videoPath && !['small-talk-app', 'ai-subcontracting-desk'].includes(project.id) && { label: 'Watch Demo', href: project.videoPath },
     project.tableauUrl && { label: 'Explore Dashboard', href: project.tableauUrl },
     project.githubUrl && !project.githubCtaDescription && { label: 'View GitHub', href: project.githubUrl },
     ...project.externalLinks,
@@ -40,10 +40,11 @@ function ProjectDetail({ project, onBack }) {
   const isDrgProject = project.id === 'drg-research'
   const isDifferentialProject = project.id === 'differential-diagnosis'
   const isSmallTalkProject = project.id === 'small-talk-app'
+  const isSubcontractingProject = project.id === 'ai-subcontracting-desk'
   const isEditorialVisualProject = isTableauProject || isMarketProject || isDrgProject
   const detailTitle = project.detailTitle || project.title
 
-  return <article className={`project-detail${isEditorialVisualProject ? ' editorial-visual-project-detail' : ''}${isTableauProject ? ' tableau-project-detail' : ''}${isMarketProject ? ' market-project-detail' : ''}${isDrgProject ? ' drg-project-detail' : ''}${isDifferentialProject ? ' differential-project-detail' : ''}${isSmallTalkProject ? ' small-talk-project-detail' : ''}`}>
+  return <article className={`project-detail${isEditorialVisualProject ? ' editorial-visual-project-detail' : ''}${isTableauProject ? ' tableau-project-detail' : ''}${isMarketProject ? ' market-project-detail' : ''}${isDrgProject ? ' drg-project-detail' : ''}${isDifferentialProject ? ' differential-project-detail' : ''}${isSmallTalkProject ? ' small-talk-project-detail' : ''}${isSubcontractingProject ? ' subcontracting-project-detail' : ''}`}>
     <button className="project-back" type="button" onClick={onBack}>← Back to Selected Projects</button>
     <div className="project-detail-hero">
       <div className="project-detail-meta"><span>{project.category}</span>{project.year && <span>{project.year}</span>}{(project.detailStatus || project.status) && <span className="project-status">{project.detailStatus || project.status}</span>}</div>
@@ -56,6 +57,10 @@ function ProjectDetail({ project, onBack }) {
       project.coverImage ? <div className="drg-poster-showcase">{project.pdfPath ? <a href={project.pdfPath} target="_blank" rel="noopener noreferrer" aria-label="View full DRG research poster"><img src={project.coverImage} alt={`${project.title} poster preview`} /></a> : <img src={project.coverImage} alt={`${project.title} poster preview`} />}</div> : <div className="editorial-compact-placeholder">Poster preview coming soon</div>
     ) : isDifferentialProject ? (
       <a className="github-project-feature" href={project.githubUrl} target="_blank" rel="noopener noreferrer"><span>Repository</span><strong>{project.githubCtaLabel} <Arrow /></strong><p>{project.githubCtaDescription}</p></a>
+    ) : isSubcontractingProject ? (
+      project.videoPath && <div className="subcontracting-demo-media">
+        <div className="subcontracting-video-frame"><span>Product demo</span><video controls preload="metadata" playsInline poster={project.videoPoster || undefined}><source src={project.videoPath} type="video/mp4" />Your browser does not support the video element.</video></div>
+      </div>
     ) : isSmallTalkProject ? (
       !!(project.videoPath || project.screenshots.length) && <div className="small-talk-media">
         {project.videoPath && <div className="small-talk-video-frame"><span>Local demo</span><video controls preload="metadata" playsInline poster={project.videoPoster || undefined}><source src={project.videoPath} type="video/mp4" />Your browser does not support the video element.</video></div>}
